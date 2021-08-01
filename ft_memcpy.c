@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 14:55:53 by emgarcia          #+#    #+#             */
-/*   Updated: 2021/08/01 14:55:55 by emgarcia         ###   ########.fr       */
+/*   Created: 2021/07/29 12:35:50 by emgarcia          #+#    #+#             */
+/*   Updated: 2021/08/01 17:53:57 by emgarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char	*big, const char *little, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
-	size_t	j;
-	char	*loc;
+	char	*tmp;
+	char	*s_src;
 
-	i = 0;
-	j = 0;
-	loc = (char *)big;
-	while (big[i] != '\0')
+	tmp = (char *)dst;
+	s_src = (char *)src;
+	while (n--)
 	{
-		while ((j < len) && (little[j] == big[i + j]) && (big[i + j] != '\0'))
-			j++;
-		if ((little[j] == '\0') || (j == len))
-			return (loc += i);
-		j = 0;
-		i++;
+		*tmp++ = *s_src++;
 	}
-	return (NULL);
+	return (dst);
 }

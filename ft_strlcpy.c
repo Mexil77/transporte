@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 14:55:53 by emgarcia          #+#    #+#             */
-/*   Updated: 2021/08/01 14:55:55 by emgarcia         ###   ########.fr       */
+/*   Created: 2021/07/29 14:14:34 by emgarcia          #+#    #+#             */
+/*   Updated: 2021/08/01 18:46:54 by emgarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char	*big, const char *little, size_t len)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	j;
-	char	*loc;
 
-	i = 0;
-	j = 0;
-	loc = (char *)big;
-	while (big[i] != '\0')
-	{
-		while ((j < len) && (little[j] == big[i + j]) && (big[i + j] != '\0'))
-			j++;
-		if ((little[j] == '\0') || (j == len))
-			return (loc += i);
-		j = 0;
-		i++;
-	}
-	return (NULL);
+	i = -1;
+	while (++i < dstsize && src[i] != '\0')
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+	((unsigned char *)dst)[i] = '\0';
+	return (i);
 }

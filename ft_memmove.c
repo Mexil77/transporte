@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 14:55:53 by emgarcia          #+#    #+#             */
-/*   Updated: 2021/08/01 14:55:55 by emgarcia         ###   ########.fr       */
+/*   Created: 2021/07/29 13:07:53 by emgarcia          #+#    #+#             */
+/*   Updated: 2021/08/01 17:48:49 by emgarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char	*big, const char *little, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*loc;
+	char	*s_dst;
+	char	*s_src;
 
-	i = 0;
-	j = 0;
-	loc = (char *)big;
-	while (big[i] != '\0')
+	s_dst = (char *)dst;
+	s_src = (char *)src;
+	if (s_dst > s_src && (s_src + len > s_dst))
 	{
-		while ((j < len) && (little[j] == big[i + j]) && (big[i + j] != '\0'))
-			j++;
-		if ((little[j] == '\0') || (j == len))
-			return (loc += i);
-		j = 0;
-		i++;
+		s_dst = s_dst + len - 1;
+		s_src = s_src + len - 1;
+		while (len--)
+		{
+			*s_dst-- = *s_src--;
+		}
 	}
-	return (NULL);
+	else
+	{
+		while (len--)
+		{
+			*s_dst++ = *s_src++;
+		}
+	}
+	return (dst);
 }
