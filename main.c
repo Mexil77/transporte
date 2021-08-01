@@ -8,11 +8,6 @@ int	main(void)
 	char	str3[50];
 	char	str4[] = "copil";
 	int	i = -1;
-
-	printf("ft_substr ORI : *%s*\n", str1);
-	printf("ft_substr CPY : *%s*\n", ft_substr(str1, 0, 5));
-
-	printf("\n");
 	
 	printf("ft_strjoin ORI : *%s*\n", str1);
 	printf("ft_strjoin ORI : *%s*\n", str2);
@@ -126,5 +121,14 @@ int	main(void)
 	printf("ft_memcmp OR1 : *%s*\n", str2);
 	printf("ft_memcmp OR2 : *%s*\n", str4);
 	printf("ft_memcmp FID : *%d*\n", ft_memcmp(str2, str4, 5));
+
+	printf("\n");
+
+	printf("ft_substr ORI : *%s*\n", str1);
+	printf("ft_substr CPY : *%s*\n", ft_substr(str1, 0, 5));
+
+	printf("\n");
+
+	printf("ft_atoi : *%d*\n", ft_atoi(" 	-3568ds218"));
 	return (0);
 }

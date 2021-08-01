@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 14:55:53 by emgarcia          #+#    #+#             */
-/*   Updated: 2021/08/01 20:22:37 by emgarcia         ###   ########.fr       */
+/*   Created: 2021/07/29 17:05:23 by emgarcia          #+#    #+#             */
+/*   Updated: 2021/08/01 20:25:33 by emgarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char	*big, const char *needle, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
-	char	*loc;
+	int	i;
+	int	number;
+	int	signo;
 
 	i = 0;
-	j = 0;
-	loc = (char *)big;
-	while (big[i] != '\0')
+	while ((str[i] > 8 && str[i] < 14) || str[i] == ' ')
+		i++;
+	signo = 1;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while ((j < len) && (needle[j] == big[i + j]) && (big[i + j] != '\0'))
-			j++;
-		if ((needle[j] == '\0') || (j == len))
-			return (loc += i);
-		j = 0;
+		if (str[i] == '-')
+			signo *= (-1);
 		i++;
 	}
-	return (NULL);
+	number = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		number = 10 * number + str[i] - '0';
+		i++;
+	}
+	number *= signo;
+	return (number);
 }
